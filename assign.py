@@ -34,8 +34,8 @@ def main():
         print(emp)
 
     while True:
-        print("Name is Anmol Kumar Singh")
-        print("Roll No - E22CSEU1673")
+        print("Name is Bharat Bhushan")
+        print("Roll No - E22CSEU1666")
         print("\nSort Options:")
         print("1. Sort by Age")
         print("2. Sort by Name")
