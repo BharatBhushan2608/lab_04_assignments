@@ -1,34 +1,58 @@
-# Define the employee data as a list of dictionaries
-employee_data = [
-    {"Employee ID": "161E90", "Name": "Raman", "Age": 41, "Salary (PM)": 56000},
-    {"Employee ID": "161F91", "Name": "Himadri", "Age": 38, "Salary (PM)": 67500},
-    {"Employee ID": "161F99", "Name": "Jaya", "Age": 51, "Salary (PM)": 82100},
-    {"Employee ID": "171E20", "Name": "Tejas", "Age": 30, "Salary (PM)": 55000},
-    {"Employee ID": "171G30", "Name": "Ajay", "Age": 45, "Salary (PM)": 44000},
-]
+class Employee:
+    def __init__(self, emp_id, name, age, salary):
+        self.emp_id = emp_id
+        self.name = name
+        self.age = age
+        self.salary = salary
 
-# Function to sort employee data based on the selected parameter
-def sort_employee_data(data, sort_param):
-    if sort_param == 1:
-        return sorted(data, key=lambda x: x["Age"])
-    elif sort_param == 2:
-        return sorted(data, key=lambda x: x["Name"])
-    elif sort_param == 3:
-        return sorted(data, key=lambda x: x["Salary (PM)"])
+    def __str__(self):
+        return f"{self.emp_id}\t{self.name}\t{self.age}\t{self.salary}"
+
+def sort_employee_data(employee_data, key):
+    if key == 1:
+        return sorted(employee_data, key=lambda emp: emp.age)
+    elif key == 2:
+        return sorted(employee_data, key=lambda emp: emp.name)
+    elif key == 3:
+        return sorted(employee_data, key=lambda emp: emp.salary)
     else:
-        return data
+        print("Invalid sorting parameter")
+        return employee_data
 
-# Input from the user to select sorting parameter
-print("Choose a sorting parameter:")
-print("1. Age")
-print("2. Name")
-print("3. Salary")
-sort_param = int(input("Enter the number corresponding to the sorting parameter: "))
+def main():
+    employee_data = [
+        Employee("161E90", "Raman", 41, 56000),
+        Employee("161F91", "Himadri", 38, 67500),
+        Employee("161F99", "Jaya", 51, 82100),
+        Employee("171E20", "Tejas", 30, 55000),
+        Employee("171G30", "Ajay", 45, 44000)
+    ]
 
-# Sort the data based on the selected parameter
-sorted_employee_data = sort_employee_data(employee_data, sort_param)
+    print("Employee Table:")
+    print("Employee ID Name Age Salary (PM)")
+    for emp in employee_data:
+        print(emp)
 
-# Print the sorted data
-print("\nSorted Employee Data:")
-for employee in sorted_employee_data:
-    print(f"Employee ID: {employee['Employee ID']}, Name: {employee['Name']}, Age: {employee['Age']}, Salary (PM): {employee['Salary (PM)']}")
+    while True:
+        print("Name is Anmol Kumar Singh")
+        print("Roll No - E22CSEU1673")
+        print("\nSort Options:")
+        print("1. Sort by Age")
+        print("2. Sort by Name")
+        print("3. Sort by Salary")
+        print("4. Exit")
+
+        choice = int(input("Enter your choice: "))
+
+        if choice == 4:
+            break
+
+        sorted_data = sort_employee_data(employee_data, choice)
+        
+        print("\nSorted Employee Table:")
+        print("Employee ID\tName\tAge\tSalary (PM)")
+        for emp in sorted_data:
+            print(emp)
+
+if __name__ == "__main__":
+    main()
